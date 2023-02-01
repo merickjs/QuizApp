@@ -1,0 +1,32 @@
+  const questionData=[
+      {
+          question: "200 + 150 = ?",
+          answers: {
+            a: "250",
+            b: "300",
+            c: "350",
+            d:"450"
+          },
+          correctAnswer: "c"
+        },
+        {
+          question: "150 + 85 = ?",
+          answers: {
+            a: "235",
+            b: "325",
+            c: "215",
+            d:"240"
+          },
+          correctAnswer: "a"
+        },
+        {
+          question: "325 + 120 = ?",
+          answers: {
+            a: "450",
+            b: "435",
+            c: "420",
+            d:"445"
+          },
+          correctAnswer: "d"
+        }
+      ];
