@@ -38,38 +38,51 @@ const c_text = document.getElementById("c-text");
 const d_text = document.getElementById("d-text");
 const submitBtn = document.getElementById("submit");
 const select = document.getElementById("language");
+const answersDiv = document.getElementById("answersDiv");
 
 select.addEventListener("change", (e) => {
   lang = e.target.value;
-  if (lang == "english") {
+  if (questionİndex != questionData.length && lang == "english") {
     submitBtn.innerText = "Submit";
   }
-  if (lang == "turkce") {
+  if (questionİndex != questionData.length && lang == "turkce") {
     submitBtn.innerText = "Gönder";
   }
 });
 
 function displayQuestion(questionİndex) {
   let question = questionData[questionİndex];
-
-  questionTxt.innerHTML = `${question.question} `;
-  a_text.innerHTML = `${question.answers.a}`;
-  b_text.innerHTML = `${question.answers.b}`;
-  c_text.innerHTML = `${question.answers.c}`;
-  d_text.innerHTML = `${question.answers.d}`;
+  questionTxt.innerHTML = `${question.question}`;
+  answersDiv.innerHTML = `<li>
+  <input type="radio" name="answer" id="a" value="a"  >
+  <label for="a" id="a-text">${question.answers.a}</label>
+</li>
+<li>
+  <input type="radio" name="answer" id="b" value="b">
+  <label for="b" id="b-text">${question.answers.b}</label>
+</li>
+<li>
+  <input type="radio" name="answer" id="c" value="c">
+  <label for="c" id="c-text">${question.answers.c}</label>
+</li>
+<li>
+  <input type="radio" name="answer" id="d" value="d">
+  <label for="d" id="d-text">${question.answers.d}</label>
+</li>`
 }
 
 let score = 0;
 let questionİndex = 0;
 
 function checkAnswer() {
-  let answer = document.querySelector('input[name="answer"]:checked').id;
+  let answer = document.querySelector('input[name="answer"]:checked').value;
   let question = questionData[questionİndex];
+  console.log(answer);
   if (answer === question.correctAnswer) {
     score++;
   }
-
   questionİndex++;
+
   if (questionİndex === questionData.length) {
     submitBtn.addEventListener("click", () => {
       location.reload(displayQuestion);
@@ -86,7 +99,7 @@ function checkAnswer() {
       submitBtn.innerText = "Yeniden Yükle";
     }
   }
-  if (questionİndex != questionData) {
+  if (questionİndex != questionData.length) {
     displayQuestion(questionİndex);
   }
 }
