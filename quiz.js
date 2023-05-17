@@ -73,7 +73,7 @@ let questionİndex = 0;
 function checkAnswer() {
   let answer = document.querySelector('input[name="answer"]:checked').value;
   let question = questionData[questionİndex];
-  console.log(answer);
+
   if (answer === question.correctAnswer) {
     score++;
   }
